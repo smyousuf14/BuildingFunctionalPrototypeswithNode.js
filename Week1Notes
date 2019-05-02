@@ -1,0 +1,36 @@
+A web application is a client-server application 
+where the client (frontend) runs in a web browser, and the backend runs on a web server.
+
+-->The frontend is commonly referred to as the client and the backend as the server-side of a web application
+
+------------
+Approaches
+For example, one decision developers and software architects must make is client-side rendering vs. server-side rendering.
+
+With client-side rendering, the JavaScript code running in the user's web browser is responsible for requesting data from the server and manipulating the webpage as needed. For example, if a user enters an unacceptable value on a form, the client-side code would update the page with an error message without contacting the server and reloading the page.
+
+With server-side rendering, the client requests a new webpage from the server for every update, and displays the page in the way it's received. For example, if a user enters an unacceptable value on a form, the client-side code would request a new page with an error message.
+
+It is possible to use a combination of these approaches, using server-side code to render the initial page, and then updating it as needed with client-side code.
+
+------------
+Definitions:
+The web server is the physical machine that hosts your application and makes it available to users across the globe over the Internet. 
+ 
+The database is where the data for an application is stored. The database stores, organizes and provides access to an application's data. There are several types of databases and database management systems that can be used here. 
+
+-----------
+In summary, a web server provides access to resources on the web, by handling web requests from clients. It can contain an application server that handles the dynamic business logic of an application, and contain or connect to a database which correlates to the data layer of your app. These are the 2 components that you will program as the back-end developer. There are many languages and technologies you can choose to use for each layer (presentation, application, data) and for the web server. The combination of technologies used for an application make up the software/solution "stack".
+
+A back-end or full-stack developer writes the code for the application server, which handles the business logic of an application. The database server handles the storage of structured data for the application. These components exist as part of the server-side of a web app, and run on a web server. The web server software handles basic HTTP requests and responses between the server and clients over the Internet.
+---------------------
+HTTP:
+
+
+As we discussed in the last lesson, web applications consist of a client-side and a server-side component, and communicate when clients send requests to servers.
+
+In order for clients to be able to communicate with web servers, there needs to be a common language, or protocol, that provides rules for how the communication should happen. The protocol used for Web communication is called HTTP, which stands for HyperText Transfer Protocol.
+
+Your browser is using HTTP to communicate with a web server whenever you enter a URL or click a hyperlink, when a user submits data in a form, or when a page is updated with dynamic data.
+
+
