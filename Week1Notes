@@ -123,3 +123,136 @@ The header and body
 The header contains optional metadata about the request. The details of header fields are out of scope for this course.
 
 The body contains the optional parameters for the request, and/or any data being sent to the server. If a client sends a POST request after a user fills out a form, the form data would be sent within the body of the message.
+
+----------------------------------
+HTTP Responses:
+---->Web servers use HTTP to send responses to clients who have made requests.
+----->An HTTP response message consists of a status line, an optional header and an optional message body.
+The status line tells the client the result of the requested operation. Status codes are written using 3 digit codes. You may have seen a few of these codes if you've ever run into a missing webpage or an error online. The most common are:
+
+    200: This code means "OK". This status is sent when the server completed operation successfully.
+
+    400: This code means "Bad Request". This status is sent when the server couldn't understand the client request.
+
+    404: This code means "Not Found". This status is sent when the server could not locate the requested page or resource.
+
+Similarly to HTTP request messages, response messages also contain headers and a body.
+
+The header contains optional metadata about the response. The details of header fields are out of scope for this course.
+
+The body contains any data or resource the server is providing in response to the request. This can be an HTML file the client requested, or data from the database.
+
+---------------------------------------------
+Introduction to APIs and REST services:
+The role of APIs
+
+As you may have noticed, software applications can be pretty complex. Web applications, for example, have several layers and components that must work together seamlessly. Protocols and standardized interactions make it possible for different components and systems to communicate and share data using an agreed upon language.
+
+When different systems need to communicate with one another, they do so through an Application Programming Interface (API). APIs allow developers to take advantage of code and functionality written by others, without having to understand the details of how the code works. If a developer writes a large library of code to perform specific tasks, another developer can easily take advantage of that functionality using the API endpoints that are defined for it.
+
+There are many types of software APIs, including:
+
+    The set of methods that define a code library and how a developer should use the library in their code
+    Public web APIs that allow developers to take advantage of a service or feature. For example, developers can use the Bing Web Search API to provide search functionality in their applications (without having to write the code themselves). The API provides easy access to Bing's search functionality.
+
+An API generally defines how to access a set of functionality, as well as what to expect as a result of the functionality. This is similar to how a restaurant menu defines what to expect (the meal you will receive), and how to interact with the restaurant to request these things (the menu options that you can request/order).
+
+As a developer you may find yourself producing APIs if you write code that others find useful, and/or consuming APIs in order to integrate complex functionality into your application.
+REST Services
+
+REST Services are a category of APIs that are available on the Web, and accessed using HTTP requests. Recall from the HTTP lessons that HTTP requests include a request method (GET, PUT, POST or DELETE) and a URI to identify a resource to operate on.
+
+In order to handle these requests, you can write code on your web server that will tell the server what to do based on the type of request that comes in. Creating a Web API is a way of doing just that. Web APIs are also commonly referred to as REST APIs, RESTful APIs or REST services.
+
+
+Defining REST API:
+
+
+We introduced the concept of APIs, and REST Services- APIs that are accessed on the Web.
+
+In this course, we'll learn how to build REST Services that will serve as the backend of a basic web application. Let's explore what this involves.
+
+REST Overview
+
+REST stands for REpresentational State Transfer. This can be a complex topic, and many of the details are beyond the scope of this introduction. However, there are a few important, yet simple, ideas to understand as we build a basic RESTful API.
+
+We know that the function of the backend of a web app is to listen for and handle requests from clients, and that these requests revolve around data. In a RESTful system, all data is represented in terms of resources. REST revolves around the idea of resources and performing actions on those resources.
+
+You may notice that this is the same thing HTTP is based on, which is correct and makes developing an HTTP-based REST services pretty straightforward. The most common way to implement a RESTful Web API is using HTTP.
+JSON
+
+An important thing to consider is how data is transferred between systems. When you request a list of questions from the API for a Q&A app, for example, what format is this list returned to you in?
+
+JSON, which stands for JavaScript Object Notation, is the most common data-interchange format on the Web. JSON is a text-based data format that is easily read by humans and is language independent, meaning it can be used across programming languages. This means that an API written in one language, let's say Java, could share data with a system written in JavaScript without any issues. JSON data is simply text, and it can be converted into data objects or other formats as needed.
+
+In short, JSON is:
+
+    self-describing: can easily be read and understood by humans
+    hierarchical: JSON values can be nested. This makes it easy to represent complex data.
+    language-independent: JSON can be parsed by many programming languages.
+
+What does JSON look like? It's simply a collection of attribute-value pairs that represent properties of data. For example, the JSON data for a list of people might look like the following:
+
+[
+    {
+        firstName: "John",
+        lastName: "Doe",
+        age: 25
+    },
+    {
+        firstName: "Bill",
+        lastName: "Gates",
+        age: 18
+    },
+    {
+        firstName: "Jane",
+        lastName: "Doe",
+        age: 59
+    }
+]
+
+This data could be interpreted by a programming language, like JavaScript, and turned into an object. It could also be parsed server-side in order to store the data in a database. Many REST Services transfer data using JSON, but there are other options, like XML. We'll learn how to send and accept JSON data as we build REST APIs throughout the course.
+Building a REST API
+
+Our REST API will simply consist of a set of endpoints, or options, that match the types of HTTP requests we expect our clients to make. Each API endpoint is defined by:
+
+    an action: an HTTP method type (GET, PUT, POST or DELETE)
+    a resource: a URI for the resource to access
+
+This is exactly the same information that an HTTP request includes. Our API is simply telling the server which of these requests to pay attention to, and what to do when each type of request comes in.
+
+For example, if we were creating the API for the Q&A app from previous examples, each of the following might be a separate API endpoint on the app server:
+
+    POST /questions
+
+    GET /questions:3
+
+    GET /questions
+
+    PUT /questions:2
+
+These endpoints are accessed through URLs. For example, the request to the GET /questions endpoint would be the following URL: http://www.askquestions.com/questions.
+
+To create a REST API with these endpoints, we would create methods for each endpoint, which would contain code telling the server what to do in each case. For the "GET questions" endpoint, we might write code to connect to the database, pull a list of questions, and return the list of questions in JSON to the client.
+
+Note that APIs need to be documented in order to let developers know how to work with them. In addition to the action and resource that define the endpoint, the developer may also need to provide additional information, or parameters, along with the API request. For example, a developer requesting a list of questions posted by a specific user (user ID #4, for example) would need to send a request that includes:
+
+    the action: GET
+    the resource: Questions
+    additional parameter- the user's ID: 4
+
+The URL for this request might look something like this: GET /Questions?ID=4
+Consuming REST APIs
+
+As a developer, you'll likely come across a scenario where you'll need to consume a REST Service in your application. For example, consider you're building an application that allows people to share articles they write. You might want to provide a way for your users to share their articles on other social platforms, like LinkedIn. LinkedIn, like other companies, provides APIs that make scenarios like this possible. With the Share on LinkedIn REST API, for example, developers can easily take advantage of LinkedIn's platform in their applications, without having to write all of the code to manually post content to LinkedIn. This simply involves sending an HTTP request to the API LinkedIn provides, providing the appropriate data, and letting LinkedIn's code handle the details.
+
+Week 1 Summary:
+If you made it to the end of this module/week, you should be able to speak the lingo of a back-end web developer!
+
+We explored what exactly the backend refers to, and the role web servers play in the functioning of web applications.
+
+We took a look at HTTP, the protocol that allows communication between web clients and servers over the Internet. We identified the HTTP request method types that align the CRUD operations applications should support: GET, PUT, POST and DELETE.
+
+We then took a deeper look at how the server-side code we write in upcoming modules wil support requests from clients. An API will define a set of endpoints that align with the HTTP requests we expect from clients. These endpoints consists of an HTTP request type and a URI.
+
+In the next module, we'll take a look at Node.js, the framework that will allow us to write JavaScript code to handle all of the server-side functionality we've discussed so far. The next module will allow you to build a basic web server that can handle and respond to requests from web clients.
