@@ -1,0 +1,8 @@
+This module will introduce you to the basics of using Node.js and Express to create web app backends. We'll walk through the components of Node.js and Express apps and practice with examples.
+
+In this module you will:
+
+    Become familiar with using Node.js to set up and run basic web servers
+    Become familiar with using Express with Node.js to create basic Node.js REST APIs
+    Create an API to handle HTTP requests by defining routes in an Express app
+-----------------------------------------------------------------------------------
