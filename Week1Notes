@@ -33,4 +33,93 @@ In order for clients to be able to communicate with web servers, there needs to 
 
 Your browser is using HTTP to communicate with a web server whenever you enter a URL or click a hyperlink, when a user submits data in a form, or when a page is updated with dynamic data.
 
+--------
+Now, let's look at how HTTP makes this communication and functionality possible.
 
+All interactions that use HTTP are based on requests and responses.
+
+    Clients(browsers) send HTTP requests to servers to request resources, data or actions on data. The requests are what correspond to the CRUD operations as detailed above.
+
+    Servers send HTTP responses to clients after handling the requests appropriately. These responses include a status and can include data or resources that were requested.
+
+    HTTP defines request methods and response methods that clients and servers use to communicate.
+
+HTTP revolves around the idea of resources and actions on those resources that we introduced above. The actions that can be performed with HTTP correlate to each CRUD operation:
+
+    creating data: HTTP PUT; HTTP POST
+    reading data: HTTP GET
+    updating data: HTTP PUT; HTTP POST
+    deleting data: HTTP DELETE
+
+Clients use these HTTP methods in order to facilitate CRUD operations within an application.
+
+A central aspect of HTTP is that it is stateless. This means that the server and client never need to remember anything about the resources or any previous requests/responses. Every request and response is independent from the previous one.
+
+HTTP Request Methods
+
+HTTP defines a set of methods that clients can use to request information from web servers. Remember that these methods correspond to the CRUD operations that can be performed on data:
+
+    Creating data:
+
+    Clients use the HTTP POST method to insert or update data on the server. This is the method used when HTML forms need to send form data to the server. For example, when a user fills out a form to create a new account and presses the submit button, the browser would send an HTTP POST request to the application server to have the user's data stored in a database.
+
+    Clients use the HTTP PUT method to create or update data on the server. This method is similar to the POST method.
+
+    Reading data:
+
+    Clients can use the HTTP GET method to retrieve information from a server. This is useful in scenarios where the client needs to retrieve something that the user is requesting.
+
+    For example, when a user browses a shopping site and navigates to the "pants" page, the browser may send a GET request to the app's server requesting a list of all pants for sale and then display those results on the page.
+
+    The client may optionally pass parameters that give the server more information about the request, such as the id or name of the specific object the client wants to locate.
+
+    Updating data: The HTTP PUT or POST methods
+
+    Deleting data:
+
+    Clients use the HTTP DELETE method to delete resources from the server.
+
+Format of an HTTP Request
+
+The HTTP request messages that clients send consist of a request line, an optional header and an optional message body.
+The Request Line
+
+When a client sends an HTTP request to a server, it needs to include some key information about the request: HTTP Request
+
+    Request method: What type of request is being made? (GET, PUT, POST or DELETE)
+    a URI to identify the resource involved in the request: What resources does this request affect?
+    HTTP Version #: What version of the HTTP protocol is this message written in?
+
+This information is included in the request line of an HTTP Request message.
+
+For example, in a Q&A forum, the HTTP request lines would be used as follows to access and modify questions:
+
+Let's assume the server URL in this scenario is www.askquestions.com and that the path for the question resource is /questions.
+
+    Create- add a new question:
+
+    POST /questions HTTP/1.1
+
+    Read- view a question (a question with an ID=3, in this case):
+
+    GET /questions:3 HTTP/1.1
+
+    Read- view all questions:
+
+    GET /questions HTTP/1.1
+
+    Update- Modify a question:
+
+    PUT /questions:2 HTTP/1.1
+
+    Delete- Delete a question:
+
+    DELETE /questions:4 HTTP/1.1
+
+The web server would interpret each of these requests based on the request type and the URI, and respond or complete an operation as appropriate.
+
+The header and body
+
+The header contains optional metadata about the request. The details of header fields are out of scope for this course.
+
+The body contains the optional parameters for the request, and/or any data being sent to the server. If a client sends a POST request after a user fills out a form, the form data would be sent within the body of the message.
