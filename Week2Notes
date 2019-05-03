@@ -6,3 +6,57 @@ In this module you will:
     Become familiar with using Express with Node.js to create basic Node.js REST APIs
     Create an API to handle HTTP requests by defining routes in an Express app
 -----------------------------------------------------------------------------------
+What is Node.js?
+JavaScript was created to be used in the development of interactive webpages.  JavaScript traditionally runs in web browsers, meaning it's used for front-end/client-side web development.
+
+Recently JavaScript has also become popular for server-side development. With developments like Node.js, JavaScript can be used to run web servers. With Node.js, we can write JavaScript code on the server-side that performs the data access and manipulation for an application before returning that data to the client.
+
+Intro to Node.js
+--->Node.js is a server-side runtime environment
+---->  can be used to program web application servers.
+. The event-driven asynchronous nature of Node.js makes web apps developed using Node.js very fast and efficient.
+Node.js can be used to:
+
+        generate page content dynamically
+        handle HTML form data
+        work with databases
+        work with files on the server
+        
+        
+-------------------------------------------------------------------------------------------
+Let's take a look at how a basic web server can be set up using Node.js:
+
+        Import the proper modules that you'll need for your project
+
+        Set up a server to listen for HTTP requests.
+
+        Configure server to interpret and respond to HTTP requests
+
+            a. Work with database to obtain data for response
+            b. Perform logic and algorithms, if needed, to prepare response
+In computer networking, a port is a destination, or an endpoint for communication. You can think of a port as an address that you can send mail to. When we use Node.js to set up an application server on a computer (a server), we'll have to specify which port requests for this app can be sent to. This is the port # we will program the Node.js app to listen for requests on. 
+------
+Node Package Manager (npm): This comes packaged with your Node.js installation. It allows you to quickly install other add-ons to use 
+with your Node.js projects.
+Dependencies: is a package that your project depends on for any given reason. NPM allows us to install and manage these dependencies
+
+
+Modules: Modules are collections of functions that you can utilize in your Node.js application. This allows you to easily incorporate existing code that is written for a specific scenario, which helps you focus on your app's behavior.
+
+You will add a module to your project using the require() function, passing in the name of the module.
+
+For example, require('express'); includes the express module in your project.
+
+NOTE: Note: We'll use single quotes (' ') instead of double quotes (" ") in Node.js files, except for when writing in json
+
+The HTTP Module: The http module is a module that is built into Node.js. It allows HTTP communication with your Node.js server.
+The package.json file
+
+
+The Package.json file:
+Every Node.js project contains a package.json file. This file contains metadata about your project, such as the project title, version #, author(s), etc. More importantly, it lists the dependencies that your project has- listing each dependency and the version of each dependency that your project needs.
+
+Node.js will use the information in this file to install the correct dependencies when you set up your project.
+
+You'll run the npm init command to setup your project, which uses the information from your package.json file to do so.
+
