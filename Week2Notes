@@ -60,3 +60,16 @@ Node.js will use the information in this file to install the correct dependencie
 
 You'll run the npm init command to setup your project, which uses the information from your package.json file to do so.
 
+__________________________________________________________________________________________
+
+
+Using Express with Node.js
+
+Express is a framework that makes it easy to build web apps and APIs with Node.js.
+
+The primary way that we'll use Express in this course is to route HTTP requests that are made to your server.
+
+With Express, you can easily define routes that control how your server handles different types of requests, which translates to the endpoints that make up your REST API.  You could accomplish this same functionality using pure Node.js, but using a framework allows developers to reuse common functionality, in this case API functionality, while focusing on writing code for the unique requirements of their own projects.
+
+As you'll see, using Express allows us to easily define the endpoints for our APIs in a Node.js project.
+
