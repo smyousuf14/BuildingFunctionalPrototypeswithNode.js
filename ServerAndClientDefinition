@@ -1,0 +1,10 @@
+Server: A Server is a physical computer that provides services 
+Client: A hardware or software that accesess the services of a server
+
+
+A few important points about Node.js:
+-It is a commandline tool that can be run as a web server
+-It uses javascript
+-It is very important when you need to do many things at the same time. 
+
+Node.js is really suited for web games, chat rooms, and other situations where more than one user need updated information without refreashing the page. 
