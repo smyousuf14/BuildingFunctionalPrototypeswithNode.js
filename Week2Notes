@@ -73,3 +73,49 @@ With Express, you can easily define routes that control how your server handles 
 
 As you'll see, using Express allows us to easily define the endpoints for our APIs in a Node.js project.
 
+---------------------------------------------------------------------------------------------------
+Working with Express
+Now that you have a basic understanding of what we can use Express for, lets take a look at the basics of using Express to build a REST API.
+
+This lesson will give you an overview of some concepts and tools that you'll be working with in the next exercise.
+Steps to create a REST API using Express with Node.js
+
+    Import the proper modules that will help you develop your app. You'll need to import the Express module in order to use Express in your Node.js project.
+
+    Set up a server to listen for HTTP requests. Express makes this step simpler than using Node.js alone.
+
+    Configure server to receive and respond to HTTP requests
+
+    a. Set up routes that specify how to handle different HTTP requests.
+
+    b. Work with database to obtain data for response
+
+    c. Perform logic and algorithms, if needed, to prepare response
+
+Routing
+
+Routing is a fundamental aspect of developing a REST API with Express. Routing refers to the process of defining how the app will respond to client requests to particular API endpoints.
+
+As we covered in Module 1, an endpoint refers to a unique combination of http request type and request URI/path.
+
+For example, a client may send a GET request to the /questions path of an API in order to retrieve a list of questions. We would refer to this endpoint as GET '/questions'.
+
+A different endpoint on the same server might be POST '/questions'.
+
+Express allows us to set up a route to handle each API endpoint. For each route, we'll provide a callback function that Express will run once a client sends a request to that endpoint.
+What About Our Client-Side Files?
+
+You may be wondering how your client-side HTML, CSS and JavaScript files integrate with your server-side app.
+
+There are several web app development models, such as the commonly used MVC pattern. In some patterns, you can use server-side rendering, where the backend of your app directly modifies your client-side files on the server. In such scenarios, the server-side code directly inserts data into HTML templates before returning those files to the client.
+
+In this case, since we are developing a REST API as our backend, our server will simply be responding to the client with data when requested. Therefore, our client-side files will be sending requests for that data, and then filling the data into the HTML file appropriately within the browser.
+
+This process of simply returning files without modifying them is called serving static files. We'll keep our static HTML, CSS and JavaScript files for our front-end in a public folder on our server, and Express will simply return those files as-is when the browser requests them.
+
+The following line of code in your project file will accomplish this:
+
+    app.use(express.static('public'));
+
+So, our app will start running on a server, and when a user navigates to the website, our Express app will simply send over the HTML, CSS and client-side JavaScript files to run as is. At some point, the client-side JavaScript code may send a request to the server for a list of data, or to update data based on user input. That's when our Express/Node.js code will work to handle the request.
+
