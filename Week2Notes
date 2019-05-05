@@ -119,3 +119,26 @@ The following line of code in your project file will accomplish this:
 
 So, our app will start running on a server, and when a user navigates to the website, our Express app will simply send over the HTML, CSS and client-side JavaScript files to run as is. At some point, the client-side JavaScript code may send a request to the server for a list of data, or to update data based on user input. That's when our Express/Node.js code will work to handle the request.
 
+------------------------------------------------
+
+
+Now that you've been exposed to the basics of working with Node.js and Express to build bast web apps and APIs, let's build a more realistic REST API.
+
+The following guide will walk you through the process of setting up the Node.js project , and using Express to define routes that align to a REST API.
+Context
+
+We'll create a basic REST API that stores and provides access to a set of quotes. Each quote will have the following information associated with it:
+
+    id: a unique number to reference the quote
+    quote: a string containing the quote itself
+    author: a string containing the author's first and last name, or "Unknown"
+    year: the year the quote was recorded or discovered
+
+Path	Method	Body	Result
+/quotes 	GET 	n/a 	View a list of all quotes
+/quotes/:id 	GET 	n/a 	View a quote with the id :id
+/quotes 	POST 	quote object 	Add a new quote
+
+At this point since we haven't set up a database yet, our API will return placeholder messages and sample data.
+
+The pages that follow will walk through building the API. In the next module, you will complete this project by connecting the API to a database. For now, you'll return sample data in place of stored data. 
