@@ -316,3 +316,9 @@ app.listen(3000, function(){
 
 If you want more practice, there are several ways to modify and improve this API. You could add more routes, such as a DELETE /quotes route, or a PUT /quotes route to modify existing quotes. In the next module, we'll continue working on this API as we connect to a SQL database.
 
+----------------------------------
+If you've made it to the end of this module, you should have a working REST API built with Node.js and Express!
+
+This module walked you through the basics of using Node.js and Express to build REST APIs. We started with the basics of setting up a Node.js project, using the command line to set up a package.json file. We learned how to include Node modules to take advantage of libraries and frameworks built by others. We used the Express module to make it easier to define routes, which let us build a REST API to handle requests from clients.
+
+All that's missing now is persistent data. Right now, you're returning some sample responses to clients. In the next module, we'll learn all about databases so that your server can store and retrieve real data as it needs to. 
