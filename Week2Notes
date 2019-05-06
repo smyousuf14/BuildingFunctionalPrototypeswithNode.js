@@ -161,7 +161,87 @@ On the new request window, complete the following steps:
         Select the Send button.  (Make sure your Node.js API is still running)
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+POST Routes:
+Now that we've set up 2 GET Routes in our API, let's add a POST route that will allow users to send data to be stored.
 
+We'll add the following endpoint to our API:
+Path	Method	Body	Result
+/quotes 	POST 	quote object 	Add a new quote
+
+The associated route header in our Express app will thus be:
+
+
+app.post('/quotes', function(req, res){
+    console.log("Insert a new quote");
+});
+
+Parsing request body data - req.body
+
+Our POST endpoint will be used when a user submits data to store a new quote. That means, our route will need to access and process the data submitted by the user. Unlike GET requests, where all of the data for parameters and query strings can be passed in the request URL, data associated with a POST request is sent as part of the request method's body.
+
+In this case, this data will include the quote string, the author string, and a year value.
+
+We can access this data in key-value pairs using req.body, but only after the data has been parsed into this format. We can install body-parsing middleware that retrieves data from the request body message, and parses it into these key-value pairs for us.
+
+We'll use a middleware called body-parser. In order to use body-parser, complete the following steps:
+
+        Install body-parser and save it as a dependency for your Node.js project, by running the following command in your command-line interface within your project folder: npm install --save body-parser
+        In your server.js file, require body-parser with the following line of code: var bodyParser = require('body-parser');
+        Use app.use() to tell your Express app to use body-parser as middleware for url-encoded form data (this is the data format we expect to receive from HTML forms)
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+That's it! Once we complete these steps, we can use req.body to access the key-value pairs of data that were passed in the request body for a POST request.
+
+Our POST /quotes route will be defined as:
+
+
+app.post('/quotes', function(req, res){
+  console.log("Insert a new quote: " + req.body.quote);
+  res.json(req.body);
+});
+
+We are using req.body.quote to get the quote string, and sending the full JSON object representing all of the quote's data (quote, author, year), using req.body.
+Test the route
+
+Let's test this route using Postman to ensure we get the desired result.
+
+We can do this by adding sample form data for a new quote to the body of our POST request.
+
+On the new request window, complete the following steps:
+
+    Select POST from the dropdown of HTTP request method types.
+
+    Enter the request URL: localhost:3000/quotes
+
+    Select Body under the URL input box
+
+    Select x-www-form-urlencoded in the Body window to send url encoded form data
+
+    Enter key-value pairs for a new quote in the body window:
+
+    quote: We become what we think about.
+
+    author: Earl Nightingale
+
+    year: 1965
+
+    Note that the quote information being used here is just a sample for testing.
+
+    Make sure your Node.js app is running. (Use node server.js command)
+
+    Select the Send button to send the POST request to your Node.js API.
+
+Postman- POST Request
+
+In the Postman Response Body window, you should see a JSON object containing the same data you just sent in the request. This was returned using req.body.
+
+Postman- POST Request Console
+
+In the console, you should see a message that outputs the quote string.
+
+You could also test your route or utilize it by creating an HTML client that sends data from a form. Our Node.js REST API can now handle POST requests.
+_-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
