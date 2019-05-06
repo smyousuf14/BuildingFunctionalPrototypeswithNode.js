@@ -2,6 +2,7 @@
 /*Variable list*/
 var express = require("express");
 var app = express();
+var bodyParser = require("body-parser");
 
 var quotes = [
 {
@@ -39,5 +40,14 @@ app.listen(3000, function(){
 
 	console.log("Listening at port 3000");
 	
+});
+
+app.use(bodyParser.urlencoded({extended: true}));
+
+app.post("/quotes",function(request, response){
+	
+	console.log("Insert a new quote: " + request.body.quote);
+	response.json(request.body);
+
 });
 
