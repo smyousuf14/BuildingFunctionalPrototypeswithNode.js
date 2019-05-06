@@ -121,24 +121,47 @@ So, our app will start running on a server, and when a user navigates to the web
 
 ------------------------------------------------
 
+Testing with a REST Client
 
-Now that you've been exposed to the basics of working with Node.js and Express to build bast web apps and APIs, let's build a more realistic REST API.
+In the previous section, we tested our API endpoints by simply entering the URL for a request into our web browser, with the application running on localhost.
 
-The following guide will walk you through the process of setting up the Node.js project , and using Express to define routes that align to a REST API.
-Context
+This is fine for GET requests, because we can include the request and associated data (parameters and query strings) within the request URL in the browser window.
 
-We'll create a basic REST API that stores and provides access to a set of quotes. Each quote will have the following information associated with it:
+However, for POST and PUT requests, where we need to include information in the body of the request, we don't have a way to do that using a web browser.
 
-    id: a unique number to reference the quote
-    quote: a string containing the quote itself
-    author: a string containing the author's first and last name, or "Unknown"
-    year: the year the quote was recorded or discovered
+In these situations, it can be useful to use a REST client that allows you to manually send HTTP requests to a specified web server and endpoint.
 
-Path	Method	Body	Result
-/quotes 	GET 	n/a 	View a list of all quotes
-/quotes/:id 	GET 	n/a 	View a quote with the id :id
-/quotes 	POST 	quote object 	Add a new quote
+We'll work with Postman, which is available for free across platforms, but there are others as well.
 
-At this point since we haven't set up a database yet, our API will return placeholder messages and sample data.
+Getting Started with Postman
 
-The pages that follow will walk through building the API. In the next module, you will complete this project by connecting the API to a database. For now, you'll return sample data in place of stored data. 
+Postman provides a lot of features that can be useful for developers, but for now we'll focus on the ability to structure and send HTTP requests to a server.
+
+You can find detailed documentation on the Postman site here, but let's review at a high-level how to use Postman to send HTTP requests to an API.
+
+        Download and install Postman to your computer. Open the application.
+        Navigate to the New request option.
+        On the new request window, enter values for request name, description (optional), and which collection you want to save the request to for future use.
+        On the request form, the primary fields you'll need to provide values for are:
+
+            method type: Select which type of HTTP request you are sending (GET, PUT, POST, DELETE, etc.)
+            request URL:: The full URL for your request. This includes the server base URL + the API endpoint you are sending a request to. For the quotes API, the GET /quotes URL would be localhost:3000/quotes, when the API is running on your personal machine.
+            params: You can optionally enter key-value pairs for parameters that should be passed with your request. In this case, the parameters will be added to your request URL as query strings.
+            Body: You can optionally provide data to be included in the body of your request. You will typically use this when sending a POST request, to pass the data that would be coming from an HTML form.
+
+Once you have filled in the appropriate fields for your request, you can select the Send button to send the request to the specified server. If the server is running, you should receive the appropriate response, which will be displayed in the Response section of the Postman window.
+Testing the GET /quotes route.
+
+Let's walk through how to test the GET /quotes/:id route from the previous section, using Postman.
+
+On the new request window, complete the following steps:
+
+        Select GET from the dropdown of HTTP request method types
+        Enter the request URL: localhost:3000/quotes/2
+        Select the Send button.  (Make sure your Node.js API is still running)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
