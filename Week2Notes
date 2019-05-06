@@ -243,5 +243,76 @@ In the console, you should see a message that outputs the quote string.
 You could also test your route or utilize it by creating an HTML client that sends data from a form. Our Node.js REST API can now handle POST requests.
 _-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Summary:
 
+
+In this exercise, we defined a Quotes API that allows users to retrieve and store quote information. This API currently defines the following endpoints:
+Path	Method	Body	Result
+/quotes 	GET 	n/a 	View a list of all quotes
+/quotes/:id 	GET 	n/a 	View a quote with the id :id
+/quotes 	POST 	quote object 	Add a new quote
+Solution
+
+Here is the final solution based on the instructions given throughout the exercise:
+
+// imports
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser');
+
+//mounts BodyParser as middleware - every request passes through it
+app.use(bodyParser.urlencoded({ extended: true })); 
+
+
+var quotes = [
+    {
+        id: 1,
+        quote: "The best is yet to come",
+        author: "Unknown",
+        year: 2000
+    },
+    {
+        id: 2,
+        quote: "This is a quote",
+        author: "First Last",
+        year: 1930
+    },
+    {
+        id: 3,
+        quote: "This is another quote",
+        author: "First2 Last2",
+        year: 1910
+    }
+];
+
+// ROUTES
+
+app.get('/', function(req, res) {
+    res.send("Get request received at '/' ");
+});
+
+app.get('/quotes', function(req, res){
+    if(req.query.year){
+        res.send("Return a list of quotes from the year: " + req.query.year);
+    }
+    else{
+        res.json(quotes);
+    }
+});
+
+ app.get('/quotes/:id', function(req, res){
+    console.log("return quote with the ID: " + req.params.id);
+    res.send("Return quote with the ID: " + req.params.id);
+});
+
+app.post('/quotes', function(req, res){
+    console.log("Insert a new quote: " + req.body.quote);
+    res.json(req.body);
+});
+
+app.listen(3000, function(){
+    console.log('Listening on Port 3000');
+});
+
+If you want more practice, there are several ways to modify and improve this API. You could add more routes, such as a DELETE /quotes route, or a PUT /quotes route to modify existing quotes. In the next module, we'll continue working on this API as we connect to a SQL database.
 
