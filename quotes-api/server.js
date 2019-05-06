@@ -28,20 +28,10 @@ var quotes = [
 
 
 
-app.get("/quotes", function(request, response){
+app.get("/quotes/:id", function(request, response){
 
-	/*response.send("Get a list of all quotes as json");
-	response.json(quotes); */ 
-	
-	if(request.query.year)
-	{
-		response.send("Return a list of quotes from the year " + request.query.year);
-		
-	}
-	else
-	{
-		response.json(quotes);
-	}
+	console.log("return quote with the ID: " + request.params.id);
+	response.send("Return quote with the ID: " + request.params.id);
 
 });
 
