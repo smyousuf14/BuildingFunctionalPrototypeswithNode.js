@@ -1,0 +1,6 @@
+So far, we've learned how to use Node.js and Express.js to build REST APIs using JavaScript. This code listens for requests from clients for data, such as requests to get a list of names or update the price of an item, and responds appropriately with data and/or resulting status.
+
+In order to respond with data, the application server needs to be hooked up to a database. A database allows us to store and organize our data in a way that makes sense for how it will be used in our app. Without a database, it would be difficult to save any data once a user left an app or tried to access it from a different device - meaning they would be starting from a blank slate each time.
+
+---------------------------------------------------
+
