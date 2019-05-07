@@ -3,4 +3,114 @@ So far, we've learned how to use Node.js and Express.js to build REST APIs using
 In order to respond with data, the application server needs to be hooked up to a database. A database allows us to store and organize our data in a way that makes sense for how it will be used in our app. Without a database, it would be difficult to save any data once a user left an app or tried to access it from a different device - meaning they would be starting from a blank slate each time.
 
 ---------------------------------------------------
+Intro to Databases:
+
+
+    A database is an organized and structured collection of data.
+
+    A database record is a single, structured item stored in a database. In the case of a Contacts database, a single contact (including the contact's name, number, address, etc.) is considered a single record.
+
+    A record is made up of a group of attributes that is stored in a database. Name, phone number, and address are each attributes that you might store relating to a contact.
+
+    Database languages allow users of databases to construct queries to perform CRUD operations on data, such as inserting new records or modifying existing ones.
+
+There are many different ways that records and attributes can be organized in a database. We'll talk about the structure of databases in the next lesson.
+
+Applications revolve around data. From the names of contacts in your phone book to the amount of money in your bank accounts, to the grades of students in a class- applications revolve around the storage, modification and retrieval of data.
+
+In order for these operations on data to take place, the data needs to be stored in a place where it can be directly accessed and modified. A database stores a collection of information on a computer in an organized, structured way. You can think of a database as a container for data. You'll often see databases represented graphically as cylinders.
+Within those containers, there are organized and structured collections of data. This organization makes it possible for other users and systems to access and work with the data.
+
+For example, consider a contact book application. The primary resources or entities being stored are contacts. A database would generally store the information for each contact as a record in the database.
+
+Each record would have attributes that describe the item being stored. What attributes might you want to include with each contact record? Perhaps the name, email address and phone number of the contact would be attributes of each contact record. Notice that these attributes can be strings, numbers, dates, and more. Each attribute has a specific data type.
+
+The database would store this collection of contact records in an organized way and make it possible for other systems to view, add, update or delete records using database queries.
+
+This functionality should sound familiar. Databases essentially store data in a way that allows CRUD operations to be performed on the data records, which aligns with the way we set up REST APIs in the previous module. The database queries we write to access and modify data in a database correlate to the CRUD operations we can perform on data, just like our API endpoints are aligned with these same operations on data.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Database Formats:
+We know that databases store data, which is made up of collections of attributes called records. How do you imagine these data records being stored in a database?
+
+There are many different formats for storing data, and several types of databases that store data in different ways.
+
+Perhaps the data is stored in text files where each line contains a single record, and the attributes, or fields, of a record are defined with a separator between each field.
+
+Text File Example
+
+Perhaps each data record is stored as an object, and the attributes are defined as properties in that object.
+
+{
+name: Thomas Axen;
+email: taxen@email.com; 
+phone_number: 555-555-5555 
+}
+
+Perhaps each data record is stored as a row in a table, where each column stores the value of an attribute.
+
+Database table format Example
+Relational Databases
+
+The type of databases we'll be focusing on in this course are relational databases, which utilize the table format of organizing data. Relational databases are common and widely used.
+
+A relational database can consist of multiple tables, where each table represents a single entity or resource type. For example, a Contacts table and a Conversations table might be stored in a single database to organize the data related to contacts, and the conversations between them. Each table would include a data record on each row, and the attribute values for that record in the corresponding columns.
+
+Relational databases make it possible to specify relationships between data elements, such as linking a specific set of contacts to a specific conversation wihtout repeating data. There is a lot you can learn about relational databases, but this course will focus on the fundamental concepts you'll need in order to understand concepts and build something using a basic database.
+Example
+
+The following table is an example of how data would be represented in a relational database. Keep in mind that a relational database would likely contain other tables in the same database that are related to one another.
+
+The following table, the Contacts table, stores a collection of contacts. The database containing this table might also contain a Conversations table to keep track of the date, time and duration of conversations between contacts. For simplicity in this introductory course, however, we'll focus on a single table. Your project prototype should be functional with only a single table.
+
+Here's a sample Contacts table:
+
+Sample Contacts Table
+
+This is a relational database table. In this table, data is stored in the following way:
+
+    The collection of contacts is stored in the Contacts table.
+
+    Each contact is stored as a record in the table, which corresponds to a table row. There are 6 records currently stored in the table above.
+
+    Each record includes the following fields, or attributes: ID, FirstName, LastName, EmailAddress, PhoneNumber, ZipCode. The values for each field of a record are stored as a column in the table on the corresponding row.
+
+    Each row contains all attributes associated with a single record
+
+    Each column contains all of the data for a specific attribute/field. For example, the PhoneNumber column contains all of the phone numbers for the contacts stored in the table.
+
+    The attributes in each column match the data type of the attribute. For example, the ZipCode column only contains numeric data.
+
+In the upcoming lessons, we'll explore SQL and SQLite, the relational language and database management system we'll be using in this course.
+---------------------------------------------------
+The role of databases/working with databases:
+
+At this point, we know that a database is a collection of organized data. Now let's talk about how we can access and take advantage of this organized data.
+
+When it comes to working with a database within an application or service, there are several components involved:
+
+1. The database- where your data is stored
+
+Your data is stored and organized in a database.
+
+2. The query language- what you want to do with your data
+
+A query language is used to define instructions for creating, accessing and modifying data in a database. In this course, you'll learn Structured Query Language (SQL), an extremely popular and widely used query language for relational databases. SQL statements and queries define the instructions for what to do with your data, such as creating a new record, updating an attribute for a record, or deleting a record. SQL makes it straightforward to define these instructions in a human-readable language.
+
+Note: SQL is often pronounced in 1 of 2 ways. Some people pronounce it as an acronym- saying each letter of the word "S-Q-L". Others pronounce it as "Sequel". Both pronunciations are common.
+
+3. The database management system (DBMS)- how you access your database
+
+A DBMS is an application that allows you to interact with databases. Relational DBMS’s will understand the SQL commands you write, and perform the appropriate operations on the data. Database management systems ensure the data in a database remains be accurate, secure and consistent.
+
+Some common database management systems are SQL Server and MySQL. We'll be using a lightweight database engine called SQLite in this course.
+
+4. A server-side scripting language- how your app or service connects to and interacts with your database (through your DBMS)
+
+You could use SQLite (or any DBMS) on its own to create and modify databases manually. However, in order to store and retrieve data dynamically within the backend of an app, these operations need to be programmed to occur automatically. You'll need to write code on your server to connect to and interact with the database when your API receives requests or new data.
+
+In this case, we're writing JavaScript on our servers (using Node.js). SQL is the language that directly specifies the operations we want to perform on data, but we'll need to write some JavaScript code that constructs these SQL 
+--------------------------------------------------------------------------------------------------------------------------------------
+
+
 
